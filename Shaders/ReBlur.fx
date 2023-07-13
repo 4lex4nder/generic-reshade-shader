@@ -111,8 +111,8 @@ float softDepthCompare(float za, float zb)
 
 float rand(in float2 uv)
 {
-    float2 noise = (frac(sin(dot(uv, float2(12.9898,78.233) * 2.0)) * 43758.5453));
-    return abs(noise.x + noise.y) * 0.5;
+	float2 noise = (frac(sin(dot(uv, float2(12.9898,78.233) * 2.0)) * 43758.5453));
+	return abs(noise.x + noise.y) * 0.5;
 }
 
 // Passes
@@ -273,19 +273,19 @@ void PSDraw(float4 position : SV_Position, float2 texcoord : TEXCOORD, out float
 technique ReBlur
 {
 	pass
-    {
-        VertexShader = PostProcessVS;
-        PixelShader = PSDilate;
+	{
+		VertexShader = PostProcessVS;
+		PixelShader = PSDilate;
 		RenderTarget0 = ReBlur::texDilatedMotion;
 		RenderTarget1 = ReBlur::texLinearDepth;
-    }
+	}
 	
 #if BLUR_COMPUTE_SHADER <= 0
-    pass
-    {
-        VertexShader = PostProcessVS;
-        PixelShader = PSReconstruct;
-    }
+	pass
+	{
+		VertexShader = PostProcessVS;
+		PixelShader = PSReconstruct;
+	}
 #else
 	pass
 	{
@@ -297,7 +297,7 @@ technique ReBlur
 	pass
 	{
 		VertexShader = PostProcessVS;
-        PixelShader = PSDraw;
+		PixelShader = PSDraw;
 	}
 #endif
 }
